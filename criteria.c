@@ -418,14 +418,14 @@ struct mako_criteria *global_criteria(struct mako_config *config) {
 	return criteria;
 }
 
-static void timespec_from_ms(struct timespec *t, long time_ms) {
+void timespec_from_ms(struct timespec *t, long time_ms) {
 	static const long ms = 1000000;
 
 	t->tv_sec = time_ms / 1000;
 	t->tv_nsec = (time_ms % 1000) * ms;
 }
 
-static void timespec_add(struct timespec *t, struct timespec *u) {
+void timespec_add(struct timespec *t, struct timespec *u) {
 	static const long s = 1000000000;
 
 	t->tv_sec += u->tv_sec;

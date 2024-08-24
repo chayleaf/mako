@@ -60,4 +60,7 @@ struct mako_criteria *create_criteria_from_notification(
 
 bool validate_criteria(struct mako_criteria *criteria);
 
+void timespec_add(struct timespec *t, struct timespec *u);
+void timespec_from_ms(struct timespec *t, long time_ms);
+
 #endif

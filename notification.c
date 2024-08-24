@@ -475,7 +475,11 @@ void notification_handle_touch_start(struct mako_notification *notif,
 		return;
 	}
 	notif->long_press_ctx = *ctx;
-	add_event_loop_timer(&notif->state->event_loop, 500,
+	struct timespec at, delta;
+	clock_gettime(CLOCK_MONOTONIC, &at);
+	timespec_from_ms(&delta, 500);
+	timespec_add(&at, &delta);
+	add_event_loop_timer(&notif->state->event_loop, &at,
 			handle_notification_touch_timer, notif);
 }
 
